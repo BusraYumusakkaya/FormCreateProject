@@ -1,0 +1,27 @@
+﻿@model LogInVM
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BeLogin">
+            <h2>Lütfen Giriş Yapınız</h2>
+            <br />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Kullanıcı Adı</label>
+                <input asp-for="Name" class="form-control" >
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Sifre" class="control-label">Sifre</label>
+                <input asp-for="Sifre" type="password" class="form-control" placeholder="Sifre">
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Giriş Yap" class="btn btn-primary" />
+            </div>
+        </form>
+        <p>@TempData["Message"]</p>
+    </div>
+</div>

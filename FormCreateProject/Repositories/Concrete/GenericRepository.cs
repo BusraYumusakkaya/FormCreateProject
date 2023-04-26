@@ -45,9 +45,9 @@ namespace FormCreateProject.Repositories.Concrete
             return db.Set<T>();
         }
 
-        public T GetById(Guid id)
+        public T GetById(string id)
         {
-            return db.Set<T>().FirstOrDefault(x => x.Id == id);
+            return db.Set<T>().FirstOrDefault(x => x.Id.ToString() == id);
             //return db.Set<T>().Find(id);
         }
 

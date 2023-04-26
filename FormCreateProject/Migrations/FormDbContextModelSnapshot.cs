@@ -104,42 +104,42 @@ namespace FormCreateProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("95b2e335-e208-4650-9005-04e89d3c1134"),
+                            Id = new Guid("8bf1f399-1c49-4a8e-be94-44b972938d49"),
                             DataType = "STRING",
                             Name = "Ad",
                             Required = true
                         },
                         new
                         {
-                            Id = new Guid("927497fc-b604-44cc-a8c1-7a6d2a9bcda2"),
+                            Id = new Guid("d29e4ce3-49a8-47e4-91dc-36438893d4b2"),
                             DataType = "STRING",
                             Name = "Soyad",
                             Required = true
                         },
                         new
                         {
-                            Id = new Guid("a05c7265-cd9f-42eb-8f8b-285f57d2a214"),
+                            Id = new Guid("2ae495af-f15d-45e4-842e-7b4a10e978a3"),
                             DataType = "NUMBER",
                             Name = "Yaş",
                             Required = false
                         },
                         new
                         {
-                            Id = new Guid("446f656e-12cf-442b-af66-e5f59aa923ee"),
+                            Id = new Guid("3518a9e2-8fab-49d7-8f1b-84304d903cfb"),
                             DataType = "DATETIME",
                             Name = "Doğum Tarihi",
                             Required = false
                         },
                         new
                         {
-                            Id = new Guid("f5ee8d42-c449-4671-a191-8564117a6e21"),
+                            Id = new Guid("b2fb5a11-c777-4b29-9e72-dc11b758ba26"),
                             DataType = "STRING",
                             Name = "E-posta",
                             Required = false
                         },
                         new
                         {
-                            Id = new Guid("73d629fc-e9f7-4252-adfc-ad25af3c51e5"),
+                            Id = new Guid("5566de4b-f191-4b17-91a0-3e697a8b982e"),
                             DataType = "STRING",
                             Name = "Telefon",
                             Required = false
@@ -177,7 +177,7 @@ namespace FormCreateProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("206e12c8-9ed3-4751-9868-95888a220a02"),
+                            Id = new Guid("47f5e209-320e-468f-b70d-c6e404343dc4"),
                             FirstName = "Büşra",
                             LastName = "Yumuşakkaya",
                             Name = "BusraYumusakkaya",

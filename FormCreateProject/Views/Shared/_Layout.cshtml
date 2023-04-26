@@ -21,9 +21,15 @@
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Forms</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                    @if (!string.IsNullOrEmpty(Context.Session.GetString("Name")))
+                    {
+                        <li><a asp-area="" asp-action="Index" asp asp-controller="Form" class="nav-link px-2 text-white">Forms</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-action="LogIn" asp asp-controller="Kullanicis" class="nav-link px-2 text-white">Forms</a></li>
+                       
+                    }
                     <li><a href="#" class="nav-link px-2 text-white">About</a></li>
                 </ul>
 
@@ -40,8 +46,10 @@
                     {
                         <a asp-area="" asp-action="LogIn" asp asp-controller="Kullanicis"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
                     }
-                   
-                    <button type="button" class="btn btn-warning">Sign-up</button>
+                   @if (string.IsNullOrEmpty(Context.Session.GetString("Name")))
+                    {
+                        <button type="button" class="btn btn-warning">Sign-up</button>
+                    }
                 </div>
             </div>
         </div>

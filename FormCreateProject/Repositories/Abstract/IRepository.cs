@@ -5,7 +5,7 @@ namespace FormCreateProject.Repositories.Abstract
     public interface IRepository<T> where T : class //jeneric repository
     {
         IEnumerable<T> GetAll();
-        T GetById(Guid id);
+        T GetById(string id);
         bool Add(T entity);
         bool Update(T entity);
         bool Delete(T entity);

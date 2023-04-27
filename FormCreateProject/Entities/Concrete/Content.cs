@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualBasic;
+﻿using FormCreateProject.Entities.Abstract;
+using Microsoft.VisualBasic;
 
 namespace FormCreateProject.Entities.Concrete
 {
-    public class Content
+    public class Content:BaseEntity
     {
        
-        public Guid Id { get; set; }
         public Guid? FormId { get; set; }
         public Form? Form { get; set; }
         public ICollection<Question> Questions { get; set; }

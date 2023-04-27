@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormCreateProject.Migrations
 {
     [DbContext(typeof(FormDbContext))]
-    [Migration("20230426123539_init")]
+    [Migration("20230426204355_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,10 @@ namespace FormCreateProject.Migrations
 
                     b.Property<Guid?>("FormId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -106,42 +110,42 @@ namespace FormCreateProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8bf1f399-1c49-4a8e-be94-44b972938d49"),
+                            Id = new Guid("a5dacec1-85d1-41ef-9660-0d1114b30bba"),
                             DataType = "STRING",
                             Name = "Ad",
                             Required = true
                         },
                         new
                         {
-                            Id = new Guid("d29e4ce3-49a8-47e4-91dc-36438893d4b2"),
+                            Id = new Guid("1224975c-fc3a-4149-9d0b-acae3a4cf74c"),
                             DataType = "STRING",
                             Name = "Soyad",
                             Required = true
                         },
                         new
                         {
-                            Id = new Guid("2ae495af-f15d-45e4-842e-7b4a10e978a3"),
+                            Id = new Guid("dbf19620-563d-4cf7-a975-6af6690e69d8"),
                             DataType = "NUMBER",
                             Name = "Yaş",
                             Required = false
                         },
                         new
                         {
-                            Id = new Guid("3518a9e2-8fab-49d7-8f1b-84304d903cfb"),
+                            Id = new Guid("766ead87-0c87-4f0f-820d-80f6f018a031"),
                             DataType = "DATETIME",
                             Name = "Doğum Tarihi",
                             Required = false
                         },
                         new
                         {
-                            Id = new Guid("b2fb5a11-c777-4b29-9e72-dc11b758ba26"),
+                            Id = new Guid("221cadb8-9628-4348-a114-7aaa2041881c"),
                             DataType = "STRING",
                             Name = "E-posta",
                             Required = false
                         },
                         new
                         {
-                            Id = new Guid("5566de4b-f191-4b17-91a0-3e697a8b982e"),
+                            Id = new Guid("4eb195bb-f563-4a2e-980c-8017d9ae69b2"),
                             DataType = "STRING",
                             Name = "Telefon",
                             Required = false
@@ -179,7 +183,7 @@ namespace FormCreateProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("47f5e209-320e-468f-b70d-c6e404343dc4"),
+                            Id = new Guid("2fbb97d1-5316-469c-90ef-0d5a1c178cff"),
                             FirstName = "Büşra",
                             LastName = "Yumuşakkaya",
                             Name = "BusraYumusakkaya",

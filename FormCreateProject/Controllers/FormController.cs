@@ -38,7 +38,7 @@ namespace FormCreateProject.Controllers
             form.CretedBy = 1;
             formRepository.Add(form);
             HashSet<Question> questions = new HashSet<Question>();
-            foreach (var item in ids)
+            foreach (var item in questionVM.Ids)
             {
                 var question = questionRepository.GetById(item.ToString());
                 questions.Add(question);

@@ -19,6 +19,7 @@
                     var card = $("<div>", { class: "card" }).append(cardHeader);
                     var formCheck = $("<div>", { class: "form-check" }).append(checkbox, card);
 
+                    
                     if (index % 2 === 0) {
                         col1.append(formCheck);
                     } else {
@@ -102,7 +103,7 @@
                         });
                     }
                 });
-
+                
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);

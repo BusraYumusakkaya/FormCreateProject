@@ -27,10 +27,10 @@ namespace FormCreateProject.Controllers
             if (user == null)
             {
                 TempData["Message"] = "Giriş bilgileri hatalı";
-                return View();
+                return RedirectToAction("LogIn", "Kullanicis");
             }
             HttpContext.Session.SetString("Name", user.Name);
-            TempData["Message"] = "Hoşgeldin " + user.Name;
+            //TempData["Message"] = "Hoşgeldin " + user.Name;
             return RedirectToAction("Index", "Home");
         }
 

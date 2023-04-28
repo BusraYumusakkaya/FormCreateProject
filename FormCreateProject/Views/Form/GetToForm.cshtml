@@ -3,44 +3,50 @@
     ViewData["Title"] = "Form";
 }
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<h3>@Model.Name</h3>
-<hr />
-<div class="col-md-12">
-    <div class="card">
-        @if(@Model.Description!=null && @Model.Description!=""){
-            <div class="card-header">
-                <p class="card-title mb-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Açıklama: @Model.Description</font></font></p>
-                <p class="card-title mb-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oluşturulma tarihi: @Model.CreateAt.ToString("dd/MM/yyyy")</font></font></p>
-            </div>
-        }
-        <div class="card-body">
-            <form >
-                <div class="row">
-                    <div class="col-xl-12">
-                        @foreach (var item in Model.FormQuestions)
-                        {
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:orangered">@item.Name:</font></font></label>
-                                <div class="col-lg-9">
-                                    @if(@item.Required){
-                                        <input type="@item.DataType" class="form-control" required>
-                                    }
-                                    else {
-                                        <input type="@item.DataType" class="form-control">
-                                    }
+@if (!string.IsNullOrEmpty(Context.Session.GetString("Name")))
+{
+    <h3>@Model.Name</h3>
+    <hr />
+    <div class="col-md-12">
+        <div class="card">
+            @if (@Model.Description != null && @Model.Description != "")
+            {
+                <div class="card-header">
+                    <p class="card-title mb-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Açıklama: @Model.Description</font></font></p>
+                    <p class="card-title mb-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oluşturulma tarihi: @Model.CreateAt.ToString("dd/MM/yyyy")</font></font></p>
+                </div>
+            }
+            <div class="card-body">
+                <form >
+                    <div class="row">
+                        <div class="col-xl-12">
+                            @foreach (var item in Model.FormQuestions)
+                            {
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:orangered">@item.Name:</font></font></label>
+                                    <div class="col-lg-9">
+                                        @if (@item.Required)
+                                        {
+                                            <input type="@item.DataType" class="form-control" required>
+                                        }
+                                        else
+                                        {
+                                            <input type="@item.DataType" class="form-control">
+                                        }
+                                    </div>
                                 </div>
-                            </div>
+                                <br />
+                            }
                             <br />
-                        }
-                        <br />
-                        <div class="text-end">
-                            <button type="button" class="btn btn-outline-primary" id="cancelButton" onclick="CancelSpending()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Geri Dön</font></font></button>
-                            <button type="submit" class="btn btn-outline-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gönder</font></font></button>
+                            <div class="text-end">
+                                <button type="button" class="btn btn-outline-primary" id="cancelButton" onclick="CancelSpending()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Geri Dön</font></font></button>
+                                <button type="submit" class="btn btn-outline-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gönder</font></font></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+}
 

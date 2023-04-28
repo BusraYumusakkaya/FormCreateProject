@@ -10,7 +10,6 @@ namespace FormCreateProject.Controllers
     {
         private readonly IQuestionRepository questionRepository;
         private readonly IFormRepository formRepository;
-        private readonly FormDbContext db;
        
 
         public FormController(IQuestionRepository questionRepository,IFormRepository formRepository)

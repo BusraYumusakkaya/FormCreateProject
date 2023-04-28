@@ -113,8 +113,10 @@
     });
     if (window.location == 'https://localhost:7176/Form') {
         GetForms();
+    } 
+    if (window.location == 'https://localhost:7176/') {
+        GoToFormList();
     }
-   
 });
 
 function GetForms() {

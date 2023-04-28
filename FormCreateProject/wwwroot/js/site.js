@@ -113,6 +113,7 @@
     if (window.location == 'https://localhost:7176/Form') {
         GetForms();
     }
+   
 });
 
 function GetForms() {
@@ -147,9 +148,20 @@ function GetForms() {
         }
     });
 }
-
+function GoToFormList() {
+    window.location.href = 'https://localhost:7176/Form';
+}
 
 function GoToForm(formId) {
-    window.location.href = "/forms/" + formId;
+    window.location.href = "/Form/GetToForm/" + formId;
+    
+}
+function CancelSpending() {
+    $("#confirmModalContent").html("Geri dönmek istediğinizden emin misiniz?");
+    $("#confirmYes").attr("onclick", "CancelConfirm()");
+    $("#confirmModal").modal("show");
+    setTimeout(function () {
+        GoToFormList();
+    }, 2000);
 }
 

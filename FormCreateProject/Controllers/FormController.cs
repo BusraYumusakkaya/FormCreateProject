@@ -1,4 +1,5 @@
-﻿using FormCreateProject.Entities.Concrete;
+﻿using FormCreateProject.AppDbContext;
+using FormCreateProject.Entities.Concrete;
 using FormCreateProject.Models;
 using FormCreateProject.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc;
@@ -9,13 +10,13 @@ namespace FormCreateProject.Controllers
     {
         private readonly IQuestionRepository questionRepository;
         private readonly IFormRepository formRepository;
-        private readonly IContentRepository contentRepository;
+        private readonly FormDbContext db;
+       
 
-        public FormController(IQuestionRepository questionRepository,IFormRepository formRepository,IContentRepository contentRepository)
+        public FormController(IQuestionRepository questionRepository,IFormRepository formRepository)
         {
             this.questionRepository = questionRepository;
             this.formRepository = formRepository;
-            this.contentRepository = contentRepository;
         }
         public IActionResult Index()
         {
@@ -30,24 +31,21 @@ namespace FormCreateProject.Controllers
 
         public IActionResult AddForm(int[] ids, QuestionVM questionVM)
         {
-            Content content = new Content();
             Form form=new Form();
 
             form.Name = questionVM.Name;
             form.Description = questionVM.Description;
             form.CretedBy = 1;
             formRepository.Add(form);
-            content.Name = "";
-            content.FormId = form.Id;
-            contentRepository.Add(content);
-           
+            HashSet<Question> questions = new HashSet<Question>();
             foreach (var item in ids)
             {
                 var question = questionRepository.GetById(item.ToString());
-                content.Questions.Add(question);
+                questions.Add(question);
             }
-            contentRepository.Update(content);
-            
+            form.Questions = questions;
+
+            var returner = formRepository.Update(form);
 
             return RedirectToAction(nameof(Index));
         }
@@ -56,6 +54,20 @@ namespace FormCreateProject.Controllers
         {
             IEnumerable<Form>forms = formRepository.GetAll();
             return Json(forms);
+        }
+        //[HttpGet]
+        public IActionResult GetToForm(Guid id)
+        {
+           var form = formRepository.GetByIdIncludeQuestions(id);
+
+            ViewFormVM viewFormVM = new ViewFormVM();
+            viewFormVM.Name = form.Name;
+            viewFormVM.Description = form.Description;
+            viewFormVM.CreateAt = form.CreateAt;
+            viewFormVM.FormQuestions = form.Questions;
+
+            return View(viewFormVM) ;
+
         }
     }
 }

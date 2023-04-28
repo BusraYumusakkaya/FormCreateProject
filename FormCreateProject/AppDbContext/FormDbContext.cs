@@ -10,7 +10,6 @@ namespace FormCreateProject.AppDbContext
         {
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Content> Contents { get; set; }
         public DbSet<Form> Forms { get; set; }
         public DbSet<Question> Questions { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
@@ -27,42 +26,42 @@ namespace FormCreateProject.AppDbContext
                 Id = Guid.NewGuid(),
                 Name = "Ad",
                 Required = true,
-                DataType = "STRING"
+                DataType = "string"
             });
             builder.Entity<Question>().HasData(new Question
             {
                 Id = Guid.NewGuid(),
                 Name = "Soyad",
                 Required = true,
-                DataType = "STRING"
+                DataType = "string"
             });
             builder.Entity<Question>().HasData(new Question
             {
                 Id = Guid.NewGuid(),
                 Name = "Yaş",
                 Required = false,
-                DataType = "NUMBER"
+                DataType = "number"
             });
             builder.Entity<Question>().HasData(new Question
             {
                 Id = Guid.NewGuid(),
                 Name = "Doğum Tarihi",
                 Required = false,
-                DataType = "DATETIME"
+                DataType = "date"
             });
             builder.Entity<Question>().HasData(new Question
             {
                 Id = Guid.NewGuid(),
                 Name = "E-posta",
                 Required = false,
-                DataType = "STRING"
+                DataType = "email"
             });
             builder.Entity<Question>().HasData(new Question
             {
                 Id = Guid.NewGuid(),
                 Name = "Telefon",
                 Required = false,
-                DataType = "STRING"
+                DataType = "number"
             });
 
            

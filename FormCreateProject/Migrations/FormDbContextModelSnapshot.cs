@@ -22,41 +22,6 @@ namespace FormCreateProject.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ContentQuestion", b =>
-                {
-                    b.Property<Guid>("ContentsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("QuestionsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ContentsId", "QuestionsId");
-
-                    b.HasIndex("QuestionsId");
-
-                    b.ToTable("ContentQuestion");
-                });
-
-            modelBuilder.Entity("FormCreateProject.Entities.Concrete.Content", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("FormId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FormId");
-
-                    b.ToTable("Contents");
-                });
-
             modelBuilder.Entity("FormCreateProject.Entities.Concrete.Form", b =>
                 {
                     b.Property<Guid>("Id")
@@ -108,43 +73,43 @@ namespace FormCreateProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a5dacec1-85d1-41ef-9660-0d1114b30bba"),
-                            DataType = "STRING",
+                            Id = new Guid("d3e44ff1-8035-4ebc-b5d0-f892805ae5b3"),
+                            DataType = "string",
                             Name = "Ad",
                             Required = true
                         },
                         new
                         {
-                            Id = new Guid("1224975c-fc3a-4149-9d0b-acae3a4cf74c"),
-                            DataType = "STRING",
+                            Id = new Guid("50a89be0-a453-4a57-a79f-a082cf8bb1b5"),
+                            DataType = "string",
                             Name = "Soyad",
                             Required = true
                         },
                         new
                         {
-                            Id = new Guid("dbf19620-563d-4cf7-a975-6af6690e69d8"),
-                            DataType = "NUMBER",
+                            Id = new Guid("6ed88bde-7df9-442c-bffa-7d1432b9ae1c"),
+                            DataType = "number",
                             Name = "Yaş",
                             Required = false
                         },
                         new
                         {
-                            Id = new Guid("766ead87-0c87-4f0f-820d-80f6f018a031"),
-                            DataType = "DATETIME",
+                            Id = new Guid("c0a49fd8-6ddf-459d-9ca4-595b1d0e9cb5"),
+                            DataType = "date",
                             Name = "Doğum Tarihi",
                             Required = false
                         },
                         new
                         {
-                            Id = new Guid("221cadb8-9628-4348-a114-7aaa2041881c"),
-                            DataType = "STRING",
+                            Id = new Guid("3754554c-5d99-477c-b36e-a1cf946a236a"),
+                            DataType = "email",
                             Name = "E-posta",
                             Required = false
                         },
                         new
                         {
-                            Id = new Guid("4eb195bb-f563-4a2e-980c-8017d9ae69b2"),
-                            DataType = "STRING",
+                            Id = new Guid("ef932071-800b-4935-a569-a2f7a24c2072"),
+                            DataType = "number",
                             Name = "Telefon",
                             Required = false
                         });
@@ -181,7 +146,7 @@ namespace FormCreateProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2fbb97d1-5316-469c-90ef-0d5a1c178cff"),
+                            Id = new Guid("b45526d9-aba0-4474-929d-e39ad9ff09e0"),
                             FirstName = "Büşra",
                             LastName = "Yumuşakkaya",
                             Name = "BusraYumusakkaya",
@@ -189,11 +154,26 @@ namespace FormCreateProject.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ContentQuestion", b =>
+            modelBuilder.Entity("FormQuestion", b =>
                 {
-                    b.HasOne("FormCreateProject.Entities.Concrete.Content", null)
+                    b.Property<Guid>("FormsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("QuestionsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("FormsId", "QuestionsId");
+
+                    b.HasIndex("QuestionsId");
+
+                    b.ToTable("FormQuestion");
+                });
+
+            modelBuilder.Entity("FormQuestion", b =>
+                {
+                    b.HasOne("FormCreateProject.Entities.Concrete.Form", null)
                         .WithMany()
-                        .HasForeignKey("ContentsId")
+                        .HasForeignKey("FormsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -202,20 +182,6 @@ namespace FormCreateProject.Migrations
                         .HasForeignKey("QuestionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("FormCreateProject.Entities.Concrete.Content", b =>
-                {
-                    b.HasOne("FormCreateProject.Entities.Concrete.Form", "Form")
-                        .WithMany("Contents")
-                        .HasForeignKey("FormId");
-
-                    b.Navigation("Form");
-                });
-
-            modelBuilder.Entity("FormCreateProject.Entities.Concrete.Form", b =>
-                {
-                    b.Navigation("Contents");
                 });
 #pragma warning restore 612, 618
         }

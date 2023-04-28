@@ -15,7 +15,12 @@ namespace FormCreateProject.Repositories.Concrete
 
         public IEnumerable<Form> GetAllIncludeContents()
         {
-            return db.Forms.Include(s => s.Contents);
+            return db.Forms.Include(s => s.Questions);
+        }
+
+        public Form GetByIdIncludeQuestions(Guid id)
+        {
+            return db.Forms.Include(s => s.Questions).FirstOrDefault(s => s.Id == id);
         }
     }
 }

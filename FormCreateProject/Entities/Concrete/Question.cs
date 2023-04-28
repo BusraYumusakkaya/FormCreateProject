@@ -9,6 +9,6 @@ namespace FormCreateProject.Entities.Concrete
        
         public bool Required { get; set; }
         public string DataType { get; set; }
-        public ICollection<Content>Contents { get; set; }
+        public ICollection<Form>Forms { get; set; }
     }
 }

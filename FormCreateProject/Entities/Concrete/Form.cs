@@ -8,6 +8,6 @@ namespace FormCreateProject.Entities.Concrete
         public string Description { get; set; }
         public DateTime CreateAt { get; set; } = DateTime.Now;
         public int CretedBy { get; set; }
-        public ICollection<Content>? Contents { get; set; }
+        public ICollection<Question> Questions { get; set; }
     }
 }
